@@ -1,0 +1,5 @@
+.grid {
+    display: grid;
+    grid-template: repeat(3, 3rem) / repeat(3, 3rem);
+    grid-gap: 0.5rem;
+}
