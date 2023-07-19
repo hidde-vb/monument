@@ -8,7 +8,7 @@ export type Resources = {
 };
 
 export type CardPrototype = {
-    id: string;
+    cardId: string;
     name: string;
     category: string;
     cost: number; // TODO migrate to Resources
@@ -30,6 +30,7 @@ export type Player = {
     deck: Card[];
     hand: Card[];
     field: Card[]; // TODO migrate to Entity (unit or building)
+    discard: Card[];
     resources: Resources
 };
 

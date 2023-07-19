@@ -2,6 +2,8 @@ import { INVALID_MOVE } from "boardgame.io/core";
 import { getCurrentPlayer } from "../gameLogic";
 import { Card, CardPrototype, GameArgs } from "../types";
 
+// TODO move helper functions to a separate file
+
 export const getNumberProp = (card: Card, prop: keyof CardPrototype): number => {
     const value = card[prop] ?? card.proto[prop];
 
@@ -22,6 +24,9 @@ export const getOpponent = ({ G, ctx }: GameArgs) => {
     return G[player];
 };
 
+/*
+ * An unit of the current player exchanges damage with an unit or building from the opponent.
+ */
 export const attack = ({ G, ctx }: GameArgs, attackerId: number, targetId: number) => {
     const player = getCurrentPlayer({ G, ctx });
     const opponent = getOpponent({ G, ctx });

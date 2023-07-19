@@ -1,6 +1,6 @@
 export default ([
     {
-        "id": "ancient_wall",
+        "cardId": "ancient_wall",
         "name": "Ancient Wall",
         "category": "building",
         "cost": 1,
@@ -10,7 +10,7 @@ export default ([
         "artist": "Thomas Girtin"
     },
     {
-        "id": "traveling_warrior",
+        "cardId": "traveling_warrior",
         "name": "Traveling Warrior" ,
         "category": "unit",
         "cost": 2,
@@ -20,7 +20,7 @@ export default ([
         "artist": "Carl Haag"
     },
     {
-        "id": "scriptural_study",
+        "cardId": "scriptural_study",
         "name": "Scriptural Study",
         "category": "action",
         "cost": 2,

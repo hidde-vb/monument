@@ -1,5 +1,6 @@
 import { Ctx } from "boardgame.io";
 import { describe, test, expect, beforeEach } from "vitest";
+import { onMove } from "../gameLogic";
 
 import { getInitialState } from "../setup";
 import { GameState } from "../types";
@@ -10,6 +11,7 @@ describe('Attack Ability', () => {
 
     const ctx = {
         currentPlayer: '0',
+        numPlayers: 2
     } as Ctx;
 
     beforeEach(() => {
@@ -25,6 +27,18 @@ describe('Attack Ability', () => {
 
         expect(getNumberProp(G.playerTwo.field[0], 'health')).toEqual(0);
         expect(getNumberProp(G.playerOne.field[0], 'health')).toEqual(0);
+    });
+
+    test('It trashes the card if its health is 0 or less', () => {
+        expect(getNumberProp(G.cards[4], 'health')).toEqual(2);
+
+        attack({ G, ctx} , 0, 0);
+
+        // Triggers after every move in a real game
+        onMove({ G, ctx });
+
+        expect(G.playerTwo.field.length).toEqual(0);
+        expect(G.playerTwo.discard.length).toEqual(1);
     });
 
     test('It returns INVALID_MOVE when the attacker is not a unit', () => {

@@ -1,11 +1,12 @@
 import { Ctx } from 'boardgame.io';
 import { describe, test, expect } from 'vitest';
 
-import { drawCard, playCard, onTurnBegin } from './gameLogic';
+import { drawCard, playCard, onTurnBegin, trashCard } from './gameLogic';
 import { getInitialState } from './setup';
 
 const ctx = {
     currentPlayer: '0',
+    numPlayers: 2,
 } as Ctx;
 
 describe('Moves', () => {
@@ -60,6 +61,27 @@ describe('Moves', () => {
 
             drawCard({ G, ctx });
             const result = playCard({ G, ctx }, 0);
+
+            expect(result).toEqual("INVALID_MOVE");
+        });
+    });
+
+    describe('trashCard', () => {
+        test('It removes the card from the field and adds it to the trash', () => {
+            const G = getInitialState();
+            G.playerOne.field[0] = G.cards[0];
+
+            expect(G.playerOne.field).toEqual([G.cards[0]]);
+
+            trashCard({ G, ctx }, "0", 0);
+
+            expect(G.playerOne.field).toEqual([]);
+        });
+
+        test('It returns INVALID MOVE when no cards on the field', () => {
+            const G = getInitialState();
+
+            const result = trashCard({ G, ctx }, "0", 0);
 
             expect(result).toEqual("INVALID_MOVE");
         });

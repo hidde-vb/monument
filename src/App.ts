@@ -4,7 +4,7 @@ import { Client } from "boardgame.io/react";
 import { getInitialState } from "./game/setup";
 import { GameState } from "./game/types";
 
-import { drawCard, playCard, onTurnBegin } from "./game/gameLogic";
+import { drawCard, playCard, onTurnBegin, onMove } from "./game/gameLogic";
 import { attack } from "./game/abilities/attack";
 
 
@@ -19,6 +19,7 @@ const MonumentGame: Game<GameState> = {
     },
     turn: {
         onBegin: onTurnBegin,
+        onMove: onMove,
     }
 };
 
