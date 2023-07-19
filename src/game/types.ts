@@ -1,3 +1,5 @@
+import { Ctx } from "boardgame.io";
+
 export type Resources = {
     silver: number;
     gold: number;
@@ -17,8 +19,10 @@ export type CardPrototype = {
     flavor?: string;
 };
 
-export type Card = {
+// The prototype is the card template, which can be overwritten by values in the root
+export type Card = Partial<CardPrototype> & {
     id: number;
+    exhausted?: boolean;
     proto: CardPrototype;
 };
 
@@ -34,3 +38,9 @@ export type GameState = {
     playerOne: Player;
     playerTwo: Player;
 };
+
+export type GameArgs = {
+    G: GameState;
+    ctx: Ctx
+};
+
