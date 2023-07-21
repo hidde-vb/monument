@@ -1,0 +1,18 @@
+.button {
+    position: absolute;
+    bottom: var(--space-gutter);
+    right: var(--space-gutter);
+
+    box-shadow: var(--shadow);
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: white;
+    padding: 20px 40px;
+    font-size: 1.2rem;
+    transition: var(--transition-shadow)
+}
+
+.button:hover {
+    cursor: pointer;
+    box-shadow: var(--shadow-hover)
+}

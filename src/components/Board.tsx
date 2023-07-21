@@ -1,8 +1,10 @@
 import { Ctx } from 'boardgame.io';
 import { BoardProps } from 'boardgame.io/react';
-import { GameState } from '../game/types';
+import { Card, GameState } from '../game/types';
 
 import styles from './Board.module.css';
+import HandCard from './hand/HandCard';
+import EndTurnButton from './EndTurnButton';
 
 interface context extends Ctx {
     gameover: {
@@ -12,7 +14,7 @@ interface context extends Ctx {
 }
 
 const getWinner = (ctx: context): string | null => {
-    if(!ctx.gameover) return null;
+    if (!ctx.gameover) return null;
 
     if (ctx.gameover.draw) return 'Draw!';
 
@@ -21,16 +23,23 @@ const getWinner = (ctx: context): string | null => {
     return null;
 };
 
-const GameBoard = ({ ctx }: BoardProps<GameState>): JSX.Element => {
+const GameBoard = ({ G, ctx, events }: BoardProps<GameState>): JSX.Element => {
     const winner = getWinner(ctx as context);
+
+    const onEndButtonClick = () => {
+        console.log('End Turn');
+        events?.endTurn?.();
+    };
 
     return (
         <main>
-            <h1>Monument</h1>
             {winner && <p>{winner}</p>}
-            <div className={styles.grid}>
-                
+            <div className={styles.hand}>
+                {G.playerOne.hand.map((card: Card, i) => (
+                    <HandCard key={i} card={card} />
+                ))}
             </div>
+            <EndTurnButton onClick={onEndButtonClick} />
         </main>
     );
 };

@@ -1,5 +1,20 @@
-.grid {
+main {
+    position: relative;
+    max-width: calc(100vh * 1.414);
+    height: 100vh;
+    margin: 0 auto;
+    overflow: hidden;
+
+    background-color: #f5f5f5;
+}
+
+.hand {
+    position: absolute;
+    bottom: -2rem;
+    width: 50%;
+    left: calc(25% - 6rem);
+    justify-content: center;
     display: grid;
-    grid-template: repeat(3, 3rem) / repeat(3, 3rem);
-    grid-gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(10px, max-content));
+
 }

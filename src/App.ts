@@ -7,6 +7,9 @@ import { GameState } from "./game/types";
 import { drawCard, playCard, onTurnBegin, onMove } from "./game/gameLogic";
 import { attack } from "./game/abilities/attack";
 
+import "./css/reset.css";
+import "./css/variables.css";
+
 
 import GameBoard from "./components/Board";
 

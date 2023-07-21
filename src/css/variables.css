@@ -1,0 +1,16 @@
+:root {
+    /* Palette */
+    --white: #fff;
+    --black: #000;
+
+    /* Spacing */
+    --space-gutter: 32px;
+
+    /* Typography */
+
+    /* Styling */
+    --border-radius: 5px;
+    --transition-shadow: box-shadow 0.1s ease-in-out;
+    --shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    --shadow-hover: 0 0 5px rgba(0, 0, 0, 0.5);
+}

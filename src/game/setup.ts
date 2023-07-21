@@ -40,8 +40,8 @@ export const getInitialState = (): GameState => {
     return Object.freeze({
         cards,
         playerOne: createPlayer({
-            deck: cards.slice(0, 4)
+            deck: cards.slice(0, 7)
         }),
-        playerTwo: createPlayer({  deck: cards.slice(4, 7) }),
+        playerTwo: createPlayer({  deck: cards.slice(7, 8) }),
     });
 };
